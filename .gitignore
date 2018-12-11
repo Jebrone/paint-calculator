@@ -11,3 +11,5 @@
 /tmp/*
 venv/.*
 venv
+/bin/
+/target/
