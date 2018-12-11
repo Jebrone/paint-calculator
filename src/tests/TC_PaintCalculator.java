@@ -5,9 +5,6 @@ import org.testng.annotations.Test;
 
 public class TC_PaintCalculator {
     
-    public static final String BASE_URL = "http://127.0.0.1:5000/";
-
-    
     @Test(dataProvider = "Calculate Results for a Room")
     public void test_CalculateResultsForRoom(int length, int with, int height, 
             int expectedWallarea, double expectedGallonsOfPaint) {
