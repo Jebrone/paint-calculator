@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -20,6 +21,8 @@ public class TC_PaintCalculator {
     private Page_Home homePage;
     private Page_Dimensions dimensionsPage;
     private Page_Results resultsPage;
+    
+    private static final String TEST_NAME_CALCULATE_ROOM_SURFACE = "Calculate Room Surface";
 
     @BeforeTest
     public void setup_InitializeDriver() {
@@ -39,20 +42,32 @@ public class TC_PaintCalculator {
         homePage = new Page_Home(driver);
         homePage.visitPage();
     }
-    
-    @Test(dataProvider = "Calculate Results for a Room")
-    public void test_CalculateResultsForRoom(int length, int with, int height, 
-            int expectedWallarea, double expectedGallonsOfPaint) {
+
+    @Test(dataProvider = TEST_NAME_CALCULATE_ROOM_SURFACE)
+    public void test_CalculateSurfaceArea(int length, int width, int height, int expectedWallarea) {
+        System.out.println("Test: " + TEST_NAME_CALCULATE_ROOM_SURFACE);
+        
+        dimensionsPage = homePage
+                .enterNumberOfRooms(1)
+                .submitRoomsForm();
+        
+        resultsPage = dimensionsPage
+                .enterLength(length)
+                .enterWidth(width)
+                .enterHeight(height)
+                .submitDimensionsForm();
+
+        Assert.assertEquals(resultsPage.getRoomsSurfaceArea(1), expectedWallarea);
     }
     
-    @DataProvider(name = "Calculate Results for a Room")
-    public Object[][] dp_CalculateResultsForRoom() {
+    @DataProvider(name = TEST_NAME_CALCULATE_ROOM_SURFACE)
+    public Object[][] dp_SurfaceArea() {
         Object[][] testData = new Object[][] {
-            {10, 10, 1, 100, 0.0},
-            {10, 40, 1, 400, 1.0},
-            {10, 40, 2, 800, 2.0},
-            {10, 40, 3, 1200, 3.0},
-            {30, 40, 20, 24000, 3.0}
+            {1, 1, 1, 4},
+            {100, 100, 1, 400},
+            {100, 100, 4, 1600},
+            {40, 30, 20, 2800},
+            {20, 30, 40, 4000}
         };
         
         return testData;

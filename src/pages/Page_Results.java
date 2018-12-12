@@ -8,4 +8,14 @@ public class Page_Results extends Page_Base {
         super(driver);
     }
 
+    public int getRoomsSurfaceArea(int i) {
+        // TODO Auto-generated method stub
+        return -1;
+    }
+
+    public double getRoomsGallonsRequired(int i) {
+        // TODO Auto-generated method stub
+        return -1;
+    }
+
 }
