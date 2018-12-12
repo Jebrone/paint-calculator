@@ -62,7 +62,7 @@ public class TC_PaintCalculator {
     }
 
     @Test(dataProvider = TEST_NAME_CALCULATE_GALLONS_OF_PAINT)
-    public void test_CalculateGallonsOfPaint(int length, int width, int height, int expectedGallons) {
+    public void test_CalculateGallonsOfPaint(int length, int width, int height, double expectedGallons) {
         System.out.println("Test: " + TEST_NAME_CALCULATE_GALLONS_OF_PAINT);
         
         dimensionsPage = homePage
