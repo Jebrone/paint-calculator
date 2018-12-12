@@ -5,7 +5,8 @@
         <classes>
             <class name="tests.TC_PaintCalculator">
                 <methods>
-                    <include name="test_CalculateResultsForRoom" />
+                    <include name="test_CalculateSurfaceArea" />
+                    <include name="test_CalculateGallonsOfPaint" />
                 </methods>
             </class>
         </classes>
