@@ -8,18 +8,18 @@ public class Page_Dimensions extends Page_Base {
         super(driver);
     }
 
-    public Page_Dimensions enterLength(int length) {
         // TODO Auto-generated method stub
+    public Page_Dimensions enterLength(int roomNumber, int length) {
         return this;
     }
 
-    public Page_Dimensions enterWidth(int width) {
         // TODO Auto-generated method stub
+    public Page_Dimensions enterWidth(int roomNumber, int width) {
         return this;
     }
 
-    public Page_Dimensions enterHeight(int height) {
         // TODO Auto-generated method stub
+    public Page_Dimensions enterHeight(int roomNumber, int height) {
         return this;
     }
 

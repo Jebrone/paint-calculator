@@ -53,9 +53,9 @@ public class TC_PaintCalculator {
                 .submitRoomsForm();
         
         resultsPage = dimensionsPage
-                .enterLength(length)
-                .enterWidth(width)
-                .enterHeight(height)
+                .enterLength(1, length)
+                .enterWidth(1, width)
+                .enterHeight(1, height)
                 .submitDimensionsForm();
 
         Assert.assertEquals(resultsPage.getRoomsSurfaceArea(1), expectedWallarea);
@@ -70,9 +70,9 @@ public class TC_PaintCalculator {
                 .submitRoomsForm();
         
         resultsPage = dimensionsPage
-                .enterLength(length)
-                .enterWidth(width)
-                .enterHeight(height)
+                .enterLength(1, length)
+                .enterWidth(1, width)
+                .enterHeight(1, height)
                 .submitDimensionsForm();
 
         Assert.assertEquals(resultsPage.getRoomsGallonsRequired(1), expectedGallons);
