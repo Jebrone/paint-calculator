@@ -23,6 +23,7 @@ public class TC_PaintCalculator {
     private Page_Results resultsPage;
     
     private static final String TEST_NAME_CALCULATE_ROOM_SURFACE = "Calculate Room Surface";
+    private static final String TEST_NAME_CALCULATE_GALLONS_OF_PAINT = "Calculate Gallons of Paint";
 
     @BeforeTest
     public void setup_InitializeDriver() {
@@ -59,6 +60,23 @@ public class TC_PaintCalculator {
 
         Assert.assertEquals(resultsPage.getRoomsSurfaceArea(1), expectedWallarea);
     }
+
+    @Test(dataProvider = TEST_NAME_CALCULATE_GALLONS_OF_PAINT)
+    public void test_CalculateGallonsOfPaint(int length, int width, int height, int expectedGallons) {
+        System.out.println("Test: " + TEST_NAME_CALCULATE_GALLONS_OF_PAINT);
+        
+        dimensionsPage = homePage
+                .enterNumberOfRooms(1)
+                .submitRoomsForm();
+        
+        resultsPage = dimensionsPage
+                .enterLength(length)
+                .enterWidth(width)
+                .enterHeight(height)
+                .submitDimensionsForm();
+
+        Assert.assertEquals(resultsPage.getRoomsGallonsRequired(1), expectedGallons);
+    }
     
     @DataProvider(name = TEST_NAME_CALCULATE_ROOM_SURFACE)
     public Object[][] dp_SurfaceArea() {
@@ -69,7 +87,21 @@ public class TC_PaintCalculator {
             {40, 30, 20, 2800},
             {20, 30, 40, 4000}
         };
-        
+
+        return testData;
+    }
+
+    @DataProvider(name = TEST_NAME_CALCULATE_GALLONS_OF_PAINT)
+    public Object[][] dp_GallonsOfPaint() {
+        Object[][] testData = new Object[][] {
+            {1, 1, 1, 0.0},
+            {50, 50, 1, 1.0},
+            {50, 50, 2, 1.0},
+            {50, 50, 19, 10.0},
+            {40, 30, 20, 7.0},
+            {20, 30, 40, 10.0}
+        };
+
         return testData;
     }
     
