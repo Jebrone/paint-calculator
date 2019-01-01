@@ -4,31 +4,34 @@
 
 <form action="results" method="post">
     <table name="dimensions_table" class="table">
-        <tr>
-            <th>Room Number</th>
-            <th>Length</th>
-            <th>Width</th>
-            <th>Height</th>
-        </tr>
-        {% for room in range(rooms) %}
-        <tr>
-            <td>
-                {{ room + 1 }}
-            </td>
-            <td>
-                <input type="number" name="length-{{ room }}" min="1" required/>
-            </td>
-            <td>
-                <input type="number" name="width-{{ room }}" min="1" required/>
-            </td>
-            <td>
-                <input type="number" name="height-{{ room }}" id="height" min="1" required/>
-            </td>
-        </tr>
-        {% endfor %}
+        <thead>
+            <tr>
+                <th>Room Number</th>
+                <th>Length</th>
+                <th>Width</th>
+                <th>Height</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for room in range(rooms) %}
+            <tr id="room_row_input">
+                <td>
+                    {{ room + 1 }}
+                </td>
+                <td>
+                    <input type="number" name="length-{{ room }}" id="length" min="1" required/>
+                </td>
+                <td>
+                    <input type="number" name="width-{{ room }}" id="width" min="1" required/>
+                </td>
+                <td>
+                    <input type="number" name="height-{{ room }}" id="height" min="1" required/>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
     <input type="submit">
 </form>
 
 {% endblock %}
-

@@ -3,24 +3,28 @@
 {% block body %}
 
 <table name="Results" class="table">
-    <tr>
-        <th>Room #</th>
-        <th>Amount of Feet to Paint</th>
-        <th>Gallons Required</th>
-    </tr>
-    {% for row in all_data %}
-    <tr>
-        <td>
-            {{ row['room'] }}
-        </td>
-        <td>
-            {{ row['ft'] }}
-        </td>
-        <td>
-            {{ row['gallons'] }}
-        </td>
-    </tr>
-    {% endfor %}
+    <thead>
+        <tr>
+            <th>Room #</th>
+            <th>Amount of Feet to Paint</th>
+            <th>Gallons Required</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in all_data %}
+        <tr id="room_row">
+            <td id="room_number">
+                {{ row['room'] }}
+            </td>
+            <td id="wall_space">
+                {{ row['ft'] }}
+            </td>
+            <td id="required_gallons">
+                {{ row['gallons'] }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 
 <h5>Total Gallons Required: {{ total_gallons_required }}</h5>
